@@ -1057,6 +1057,9 @@ regObject_t *mcRegistryMemGetServiceBlob(mcSpid_t spid, void *trustlet, uint32_t
         LOG_E("mcRegistryMemGetServiceBlob() failed: wrong header magic value: %d", pIntro->magic);
         return NULL;
     }
+    LOG_I(" Service intro version %u.%u",
+          MC_GET_MAJOR_VERSION(pIntro->version),
+          MC_GET_MINOR_VERSION(pIntro->version));
 
     // Get service type.
     mclfHeaderV2_t *pHeader = (mclfHeaderV2_t *)trustlet;
@@ -1070,7 +1073,11 @@ regObject_t *mcRegistryMemGetServiceBlob(mcSpid_t spid, void *trustlet, uint32_t
     }
 #endif
 
-    LOG_I(" Trustlet text %u data %u ", pHeader->text.len, pHeader->data.len);
+    LOG_I(" Trustlet version %u.%u text %u data %u ",
+          MC_GET_MAJOR_VERSION(pIntro->version),
+          MC_GET_MINOR_VERSION(pIntro->version),
+          pHeader->text.len,
+          pHeader->data.len);
 
     // If loadable driver or system trustlet.
     if (pHeader->serviceType == SERVICE_TYPE_DRIVER  || pHeader->serviceType == SERVICE_TYPE_SYSTEM_TRUSTLET) {
