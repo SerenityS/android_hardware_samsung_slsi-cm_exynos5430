@@ -30,7 +30,7 @@ LOCAL_SRC_FILES	+= 	\
 
 LOCAL_C_INCLUDES += \
 	$(TOP)/hardware/samsung_slsi-cm/$(TARGET_BOARD_PLATFORM)/include \
-	$(TOP)/hardware/samsung_slsi-cm/$(TARGET_BOARD_PLATFORM)/mobicore/common/LogWrapper \
+	$(TOP)/hardware/samsung_slsi-cm/$(TARGET_SOC)/mobicore/common/LogWrapper \
 	$(TOP)/hardware/samsung_slsi-cm/exynos/include
 
 LOCAL_SHARED_LIBRARIES += libMcClient liblog
